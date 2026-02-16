@@ -32,8 +32,9 @@ form?.addEventListener('submit', async (event) => {
   try {
     const response = await fetch(loopsEndpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailInput.value.trim() }),
+      body: new URLSearchParams({
+        email: emailInput.value.trim(),
+      }),
     });
 
     if (!response.ok) {
